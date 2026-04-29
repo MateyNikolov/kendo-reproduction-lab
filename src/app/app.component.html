@@ -1,0 +1,41 @@
+<h1>HELLO THERE</h1>
+
+<kendo-grid
+  [data]="query | async"
+  [loading]="loading"
+  [skip]="state.skip"
+  [pageSize]="state.take"
+  [rowHeight]="36"
+  scrollable="virtual"
+  [height]="600"
+  (pageChange)="pageChange($event)"
+  (add)="addHandler($event)"
+  (save)="saveHandler($event)"
+  (cancel)="cancelHandler($event)"
+>
+  <ng-template kendoGridToolbarTemplate>
+    <button kendoGridAddCommand themeColor="primary">Add New Row</button>
+  </ng-template>
+
+  <kendo-grid-column field="OrderID" title="ID" [width]="80" [editable]="false">
+  </kendo-grid-column>
+
+  <kendo-grid-column field="ShipName" title="Ship Name" [width]="200">
+    <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+      <input [(ngModel)]="dataItem.ShipName" name="ShipName" class="k-textbox k-input k-rounded-md" />
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="ShipCity" title="City" [width]="100">
+    <ng-template kendoGridEditTemplate let-dataItem="dataItem">
+      <input [(ngModel)]="dataItem.ShipCity" name="ShipCity" class="k-textbox k-input k-rounded-md" />
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-command-column title="Actions" [width]="220">
+    <ng-template kendoGridCellTemplate let-isNew="isNew">
+      <button kendoGridSaveCommand [disabled]="false">{{ isNew ? 'Add' : 'Update' }}</button>
+      <button kendoGridCancelCommand>{{ isNew ? 'Discard' : 'Cancel' }}</button>
+    </ng-template>
+  </kendo-grid-command-column>
+</kendo-grid>
