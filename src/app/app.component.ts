@@ -26,12 +26,13 @@ interface OrderItem {
   standalone: true,
   imports: [GridModule, AsyncPipe, FormsModule],
   providers: [OrdersService],
-  templateUrl: "./app.component.html"
+  templateUrl: "./app.component.html",
+  styleUrl: "./app.component.scss"
 })
 export class AppComponent {
   @ViewChild("grid") private grid?: GridComponent;
 
-  public state: State = { skip: 0, take: 50 };
+  public state: State = { skip: 0, take: 100 };
   private stateChange = new BehaviorSubject<State>(this.state);
   public query: Observable<GridDataResult>;
   public loading = false;

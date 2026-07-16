@@ -9,7 +9,21 @@ h1 {
   font-family: sans-serif;
 }
 
-td {
-  border: 1px solid grey;
+:host ::ng-deep .k-grid .k-table {
+  border-collapse: separate;
+  border-spacing: 0 16px;
+}
+
+:host ::ng-deep .k-grid .k-table tbody td {
+  border-top: 1px solid #d5d9e2;
+  border-bottom: 1px solid #d5d9e2;
+}
+
+:host ::ng-deep .k-grid .k-table tbody td:first-child {
+  border-left: 1px solid #d5d9e2;
+}
+
+:host ::ng-deep .k-grid .k-table tbody td:last-child {
+  border-right: 1px solid #d5d9e2;
 }
 
